@@ -1,0 +1,13 @@
+Random generate the fractal, constant
+
+.................................
+
+description 
+
+about fractials, 
+
+adjust color. 
+
+......................
+
+create controls so user can zoom and pan on the page. 

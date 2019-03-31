@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+  function setup() {
+ createCanvas (500,500);
+ background(10, 10, 100);
+ noLoop();
+ colorMode(HSB);
+    }
+
+    function draw() {
+        for(var i=0;i< width;i++) {
+            for( var j=0; j<height;j++) {
+                stroke(isInJuliaSet(i,j) % 360, 100 , 100);
+                point(i,j);
+            } 
+        }
+    }
+
+    function isInJuliaSet(x, y){
+        var maxTimes =500;
+        var zoomFactor =0.01; 
+        var offsetx = -0.5;
+        var offsety = -0.5;
+        var sx = map(x, 0, width, -2, 2) * zoomFactor + offsetx;
+        var sy = map(y, 0, height, -2, 2) * zoomFactor + offsety;
+   var i = 0;
+        while(i < maxTimes) {
+          var real = sx * sx - sy *sy;
+          var img = 2 * sx * sy;
+          sx = real + 0.285;
+          sy = img + 0.01;
+
+          if (sx * sx + sy * sy > 4 ) 
+              return i;
+
+            i++
+        }
+        return i;
+    }
+
+
+    </script>
+</body>
+</html>
